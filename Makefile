@@ -6,7 +6,7 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 02:51:05 by abziouzi          #+#    #+#              #
-#    Updated: 2022/04/09 02:51:35 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/04/12 00:02:33 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,4 +14,5 @@ CC = gcc
 
 Flags = -Wall -Wextra -Werror
 
-Files = 
+Files = so_long.c
+
