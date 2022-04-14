@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:32:17 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/14 01:12:09 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/04/14 02:28:32 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ int		check_extension(char *map)
 		return (1);
 	else
 		return (0);
+}
+
+int		check_shape(char *map)
+{
+	int		map_fd;
+
+	map_fd = open(map, O_RDONLY);
+	if (map_fd)
+		return (0);
+	else
+		return (1);
 }
 
 int	ft_strncmp(char *s1, char *s2, size_t n)

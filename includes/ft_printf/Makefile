@@ -5,37 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/09 02:51:05 by abziouzi          #+#    #+#              #
-#    Updated: 2022/04/14 02:32:38 by abziouzi         ###   ########.fr        #
+#    Created: 2021/12/10 14:27:00 by abziouzi          #+#    #+#              #
+#    Updated: 2021/12/16 20:02:46 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -I ft_printf.h
 
-SRC = 	src/so_long.c	\
-		src/so_long_utils.c
+AR = ar crs
 
-OBJECTS = $(SRC:%.c=.o)
+RM = rm  -rf
 
-all:$(NAME)
+FILES = ft_printf.c		ft_putchar.c	ft_putnbr.c		ft_put_uns_nbr.c	ft_putstr.c		ft_put_hexa.c	ft_nbr_len.c		ft_put_ptr.c
 
-$(NAME):$(OBJECTS)
-	ar rcs $(NAME) $?
-	$(CC) $(OBJECTS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+OBJ = ${FILES:%.c=%.o}
 
-%.o: %.c
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+$(NAME): $(OBJ)
+	$(AR) $(NAME) $(OBJ)
+	gcc $(FLAGS) -c $(FILES) -I ft_printf.h
+
+.PHONY: all bonus clean fclean re
+
+all: $(NAME)
+
+%.o : %.c ft_printf.h
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS)
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
-re: fclean all
-
-.PHONY: all clean fclean re
+re : fclean all

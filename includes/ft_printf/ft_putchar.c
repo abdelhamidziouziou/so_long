@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 20:31:45 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/11 20:47:41 by abziouzi         ###   ########.fr       */
+/*   Created: 2021/12/14 19:03:40 by abziouzi          #+#    #+#             */
+/*   Updated: 2021/12/19 04:25:12 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "ft_printf.h"
 
-// Includes
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-
-// Functions
-int		check_extension(char *map);
-int		ft_strncmp(char *s1, char *s2, size_t n);
-size_t	ft_strlen(char *s);
-
-#endif
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
