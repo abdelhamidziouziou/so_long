@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:32:17 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/14 02:28:32 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/04/14 02:45:07 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,11 @@ size_t	ft_strlen(char *s)
 	while (s[l])
 		l++;
 	return (l);
+}
+
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
 }
