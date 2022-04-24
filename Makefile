@@ -6,51 +6,39 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 02:51:05 by abziouzi          #+#    #+#              #
-#    Updated: 2022/04/14 02:54:49 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/04/24 21:58:24 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= so_long
+NAME		= so_long
 
-OS				= ${shell uname}
+CC			= gcc
 
-CC				= gcc
+CFLAGS		= -Wall -Wextra -Werror
 
-CFLAGS			= -Wall -Wextra
+OBJS		= ${SRC:.c=.o}
 
-SRC				= so_long.c so_long_utils.c so_long.h
+RM			= rm -rf
 
-OBJ				= ${SRC:.c=.o}
+SRC 		= ./src/so_long.c\
+			  ./src/so_long_utils.c\
+			  ./ft_printf/libftprintf.a
 
-RM				= rm -f
+INC			= ./inc/so_long.h \
+				./ft_printf/libftprintf.a
 
-LIBMLXMAC		= make -C mlx/
+all: so_long
 
-ifeq ($(OS),Linux)
-LDFLAGS			= -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
-CPPFLAGS 		+= -Imlx_linux -I/usr/include -Imlx_linux
-endif
-
-ifeq ($(OS),Darwin)
-LDFLAGS			= -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -lm -lz
-CPPFLAGS 		+= -Imlx_mac
-endif
-
-$(NAME): 		$(OBJ)
-ifeq ($(OS),Darwin)
-				$(LIBMLXMAC)
-endif
-
-all:			${NAME}
-
-bonus:			re
+$(NAME):	$(OBJS)
+			$(CC) $(CFLAGS) $(SRC) -o so_long
 
 clean:
-				${RM} ${OBJ}
+		   	$(RM) $(OBJS)
 
-fclean:			clean
-				${RM} ${NAME}
+fclean:
+		   	$(RM) $(OBJS)
+	   		$(RM) $(NAME)
 
-re:				fclean all
+re:			fclean all
 
-.PHONY:			all clean fclean re
+.PHONY : all clean fclean re bonus

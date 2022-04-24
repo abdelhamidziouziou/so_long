@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:31:45 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/14 02:44:24 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/04/24 05:08:08 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <mlx.h>
+int		ft_printf(const char *userstr, ...);
+char	*get_next_line(int fd);
 
 // Functions
 int		check_extension(char *map);
 int		check_shape(char *map);
+
 
 int		ft_strncmp(char *s1, char *s2, size_t n);
 size_t	ft_strlen(char *s);

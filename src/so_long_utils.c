@@ -6,11 +6,11 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:32:17 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/14 02:45:07 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/04/24 05:06:56 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 int		check_extension(char *map)
 {

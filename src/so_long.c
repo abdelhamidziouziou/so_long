@@ -6,11 +6,11 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:31:22 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/14 02:29:04 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/04/24 05:07:00 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 int	main(int argc, char *argv[])
 {
