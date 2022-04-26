@@ -6,39 +6,39 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 02:51:05 by abziouzi          #+#    #+#              #
-#    Updated: 2022/04/24 21:58:24 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/04/26 01:27:11 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= so_long
+CC = gcc
 
-CC			= gcc
+CFLAGS = -Wall -Wextra -Werror
 
-CFLAGS		= -Wall -Wextra -Werror
+NAME = so_long
 
-OBJS		= ${SRC:.c=.o}
+SRC = src/so_long.c \
+		src/so_long_utils.c \
+		ft_printf/libftprintf.a
 
-RM			= rm -rf
 
-SRC 		= ./src/so_long.c\
-			  ./src/so_long_utils.c\
-			  ./ft_printf/libftprintf.a
+OBJECTS = $(SRC:.c=.o)
 
-INC			= ./inc/so_long.h \
-				./ft_printf/libftprintf.a
+all:$(NAME)
 
-all: so_long
+$(NAME):$(OBJECTS)
+	ar rcs $(NAME) $?
+	$(CC) $(OBJECTS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(make) ft_printf/
 
-$(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $(SRC) -o so_long
+%.o: %.c
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:
-		   	$(RM) $(OBJS)
+	rm -f $(OBJECTS)
 
-fclean:
-		   	$(RM) $(OBJS)
-	   		$(RM) $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re:			fclean all
+re: fclean all
 
-.PHONY : all clean fclean re bonus
+.PHONY: all clean fclean re
