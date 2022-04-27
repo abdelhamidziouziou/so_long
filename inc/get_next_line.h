@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 20:31:45 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/27 21:02:10 by abziouzi         ###   ########.fr       */
+/*   Created: 2021/12/17 00:41:06 by abziouzi          #+#    #+#             */
+/*   Updated: 2022/04/24 05:15:21 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-// Includes
-# include <stdio.h>
+# define BUFFER_SIZE 42
+
+
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <mlx.h>
-# include "../inc/ft_printf.h"
 
-int		ft_printf(const char *userstr, ...);
 char	*get_next_line(int fd);
 
-// Functions
-int		check_extension(char *map);
-int		check_shape(char *map);
+char	*ft_read_to_rest(int fd, char *rest);
 
+int		ft_check_nl(char *rest);
 
-int		ft_strncmp(char *s1, char *s2, size_t n);
+char	*ft_strjoin(char *rest, char *buff);
 size_t	ft_strlen(char *s);
+char	*ft_strdup(char *s1);
 
-// Structs
+char	*ft_getline(char *rest);
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+char	*ft_new_rest(char *rest);
 
 #endif

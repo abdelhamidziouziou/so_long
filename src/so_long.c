@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:31:22 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/26 01:26:15 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/04/27 20:12:46 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(int argc, char *argv[])
 {
+	t_data	img;
 	void	*mlx;
 	void	*mlx_win;
-
 
 	if (argc == 2)
 	{
@@ -29,7 +29,10 @@ int	main(int argc, char *argv[])
 				ft_printf("Map loaded successfully!\n");
 				ft_printf("Starting Game...\n");
 				mlx = mlx_init();
-				mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+				img.img = mlx_new_image(mlx, 1920, 1080);
+				img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+				mlx_win = mlx_new_window(mlx, 1920, 1080, "abziouzi's So_long");
 				mlx_loop(mlx);
 			}
 			else

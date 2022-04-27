@@ -5,40 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/09 02:51:05 by abziouzi          #+#    #+#              #
-#    Updated: 2022/04/26 01:27:11 by abziouzi         ###   ########.fr        #
+#    Created: 2022/04/27 20:49:21 by abziouzi          #+#    #+#              #
+#    Updated: 2022/04/27 20:55:19 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME = so_long
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = so_long
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
-SRC = src/so_long.c \
-		src/so_long_utils.c \
-		ft_printf/libftprintf.a
+SRC = src/so_long.c src/so_long_utils.c src/get_next_line.c src/get_next_line_utils.c
 
+OBJ = $(SRC:.c=.o)
 
-OBJECTS = $(SRC:.c=.o)
+all : $(NAME)
 
-all:$(NAME)
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $(SRC) $(MLX_FLAGS) -o $(NAME)
 
-$(NAME):$(OBJECTS)
-	ar rcs $(NAME) $?
-	$(CC) $(OBJECTS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	$(make) ft_printf/
+%.o : %.c
+	$(CC) $(CFLAGS) -c $<
 
-%.o: %.c
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+clean :
+	rm -rf $(OBJ)
 
-clean:
-	rm -f $(OBJECTS)
+fclean : clean
+	rm -rf $(NAME)
 
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
+re : fclean all
