@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 00:41:06 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/04/24 05:15:21 by abziouzi         ###   ########.fr       */
+/*   Created: 2022/04/11 20:31:45 by abziouzi          #+#    #+#             */
+/*   Updated: 2022/05/28 14:38:23 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-# define BUFFER_SIZE 42
-
-
-# include <unistd.h>
+// Includes
 # include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <mlx.h>
 
+int		ft_printf(const char *userstr, ...);
 char	*get_next_line(int fd);
 
-char	*ft_read_to_rest(int fd, char *rest);
+// Functions
+int		check_extension(char *map);
+int		check_shape(char *map);
 
-int		ft_check_nl(char *rest);
 
-char	*ft_strjoin(char *rest, char *buff);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 size_t	ft_strlen(char *s);
-char	*ft_strdup(char *s1);
 
-char	*ft_getline(char *rest);
+// Structs
 
-char	*ft_new_rest(char *rest);
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 #endif
