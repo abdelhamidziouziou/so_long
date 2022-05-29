@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:32:17 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/05/28 14:39:28 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/05/28 15:19:16 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,30 @@ size_t	ft_strlen(char *s)
 	while (s[l])
 		l++;
 	return (l);
+}
+
+///
+
+int key_handler(int keycode, t_obj *obj)
+{
+
+	if (keycode == ESC)
+		exit(1);
+	else if (keycode == 49)
+		mlx_put_image_to_window(obj->mlx, obj->win, obj->img.img, (rand() % (800 / 30)) * obj->img.w, (rand() % (600 / 30))* obj->img.h);
+	if (keycode <= 126 && keycode >= 123)
+	{
+		keycode -= 123;
+		if (keycode == LEFT)
+			obj->pos.x--;
+		else if (keycode == RIGHT)
+			obj->pos.x++;
+		else if (keycode == DOWN)
+			obj->pos.y++;
+		else
+			obj->pos.y--;
+		mlx_clear_window(obj->mlx, obj->win);
+		mlx_put_image_to_window(obj->mlx, obj->win, obj->img.img, obj->pos.x * obj->img.w, obj->pos.y * obj->img.h);
+	}
+	return (1);
 }
