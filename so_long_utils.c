@@ -6,9 +6,27 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:32:17 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/02 16:00:40 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/03 20:53:13 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+}
 

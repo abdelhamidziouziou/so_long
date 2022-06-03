@@ -6,7 +6,7 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/27 20:49:21 by abziouzi          #+#    #+#              #
-#    Updated: 2022/06/02 18:07:22 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/06/03 20:53:41 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 C_FLAGS = -Wall -Wextra -Werror -c
 
-SRC =	so_long.c
+SRC =	so_long.c  so_long_utils.c
 
 OBJ =	$(SRC:.c=.o)
 
