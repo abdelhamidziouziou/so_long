@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 03:08:49 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/18 06:21:32 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/18 22:21:25 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 // XPMs
 # define COLLECTIBLE			"./img/collectible.xpm"
 # define EMPTY					"./img/empty.xpm"
+# define ENEMY					"./img/enemy.xpm"
 # define EXIT					"./img/exit.xpm"
 # define PLAYER					"./img/player.xpm"
 # define WALL					"./img/wall.xpm"
@@ -76,6 +77,7 @@ typedef struct	s_obj
 	size_t		moves;
 
 	t_img		collectible;
+	t_img		enemy;
 	t_img		exit;
 	t_img		floor;
 	t_img		player;
