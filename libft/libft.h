@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 01:57:32 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/16 23:14:44 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/18 22:44:07 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 # define NULL 			__DARWIN_NULL
 
 
-# include <fcntl.h>
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/stat.h>
-# include <time.h>
-# include <unistd.h>
+# include	<fcntl.h>
+# include	<stdarg.h>
+# include	<stdbool.h>
+# include	<stdio.h>
+# include	<stdlib.h>
+# include	<string.h>
+# include	<sys/stat.h>
+# include	<time.h>
+# include	<unistd.h>
 
 typedef struct s_list
 {

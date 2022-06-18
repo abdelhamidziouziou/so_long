@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 03:08:49 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/18 22:21:25 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/18 22:43:29 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // Libraries
 # include 						"libft.h"
 # include 						<mlx.h>
-# include						<stdbool.h>
 
 // Keys
 # define KEY_LEFT 				0
@@ -85,6 +84,7 @@ typedef struct	s_obj
 
 	t_map		map;
 
+	t_point		enemy_pos;
 	t_point		player_pos;
 
 	void		*mlx;
