@@ -5,36 +5,46 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/27 20:49:21 by abziouzi          #+#    #+#              #
-#    Updated: 2022/06/04 11:30:00 by abziouzi         ###   ########.fr        #
+#    Created: 2022/06/11 03:03:20 by abziouzi          #+#    #+#              #
+#    Updated: 2022/06/18 06:18:42 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME		=	so_long
 
-CC = gcc
+CC			=	cc
 
-C_FLAGS = -Wall -Wextra -Werror -c
+FLAGS		=	-Wall -Wextra -Werror -g
 
-SRC =	so_long.c  so_long_utils.c
+LIBFT		=	libft
 
-OBJ =	$(SRC:.c=.o)
+SRC			=	src/so_long.c			\
+				src/check_map.c			\
+				src/check_map_utils.c	\
+				src/global_utils.c		\
+				src/movement.c			\
+				src/render.c			\
+				src/render_utils.c
 
-all: $(NAME)
+OBJ			=	$(SRC:%.c=%.o)
 
-$(NAME):	$(OBJ)
-			ar rcs $(NAME) $?
-			$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+all			:	$(NAME)
 
-%.o: %.c
-			$(CC) $(C_FLAGS) -Imlx $< -o $@
+$(NAME)		:	$(OBJ)
+				make -C $(LIBFT)
+				@echo " [ .. ] | Compiling libft.."
+				$(CC) $(CFLAGS) $^ -o $@ -lmlx -framework AppKit -framework OpenGl -L$(LIBFT) -lft
+				@echo " [ OK ] | Libft ready!"
 
-clean:
-			rm -f $(OBJ)
+%.o			:	%.c inc/so_long.h
+				$(CC) $(CFLAGS) -c $< -o $@ -I gnl -I libft
 
-fclean:	clean
-			rm -f $(NAME)
+clean		:
+				rm -f $(OBJ)
 
-re: fclean all
+fclean		:	clean
+				rm -f $(NAME)
 
-.PHONY: all clean fclean reß
+re			:	fclean all
+
+.PHONY		:	all 	clean	fclean	re
