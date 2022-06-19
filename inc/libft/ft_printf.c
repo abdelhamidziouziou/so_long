@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:54:01 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/11 05:20:17 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 09:18:58 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ int	ft_checker(const char s, va_list lista)
 	if (s == 'u')
 		len += ft_putnbr_ptf(va_arg(lista, unsigned int), "0123456789", 10);
 	if (s == 'x')
-		len += ft_putnbr_ptf(va_arg(lista, unsigned int), "0123456789abcdef", 16);
+		len += ft_putnbr_ptf(va_arg(lista, unsigned int),
+				"0123456789abcdef", 16);
 	if (s == 'X')
-		len += ft_putnbr_ptf(va_arg(lista, unsigned int), "0123456789ABCDEF", 16);
+				len += ft_putnbr_ptf(va_arg(lista, unsigned int),
+				"0123456789ABCDEF", 16);
 	if (s == 'p')
 	{
 		len += write(1, "0x", 2);
-		len += ft_putnbr_ptf(va_arg(lista, unsigned long), "0123456789abcdef", 16);
+		len += ft_putnbr_ptf(va_arg(lista, unsigned long),
+				"0123456789abcdef", 16);
 	}
 	return (len);
 }

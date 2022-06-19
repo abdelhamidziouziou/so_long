@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 03:08:49 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 08:34:36 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 09:55:16 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 # define SO_LONG_H
 
 // Libraries
-# include 						"libft/libft.h"
-# include 						<mlx.h>
-# include 						<stdbool.h>
+# include "libft/libft.h"
+# include <mlx.h>
+# include <stdbool.h>
 
 // Keys
-# define KEY_LEFT 				0
-# define KEY_DOWN 				1
-# define KEY_RIGHT 				2
-# define KEY_UP 				13
-# define KEY_ESC 				53
+# define KEY_LEFT				0
+# define KEY_DOWN				1
+# define KEY_RIGHT				2
+# define KEY_UP					13
+# define KEY_ESC				53
 
 // Errors & Messages
 # define ERR_ARGS				"ERROR : Invalid arguments. Use : ./so_long [*.ber] map."
+# define ERR_ARGS_BONUS			"ERROR : Invalid arguments. Use : ./so_long_bonus [*.ber] map."
 # define ERR_MAP_EXT			"ERROR : Invalid file extension. Only [*.ber] files allowed."
 # define ERR_MAP_EXIT			"ERROR : Exit."
 # define ERR_MAP_READ			"ERROR : Could not read map."
@@ -36,7 +37,7 @@
 # define ERR_MLX				"ERROR : MLX error."
 # define EXIT_GAME				"Closing game..."
 # define GAME_SUCCESS			"ALLAH Y TA9ABAL :)"
-# define LINES_1				"\n--------------------------------------------\n"
+# define LINES					"-------------------------------------------------------------"
 
 // XPMs
 # define COLLECTIBLE			"./img/collectible.xpm"
@@ -48,13 +49,13 @@
 
 // Structs
 
-typedef struct	s_point
+typedef struct s_point
 {
 	int	x;
 	int	y;
 }				t_point;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char		**data;
 	size_t		collectibles;
@@ -64,14 +65,14 @@ typedef struct	s_map
 	size_t		starting_position;
 }				t_map;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void		*data;
 	int			height;
 	int			width;
 }				t_img;
 
-typedef struct	s_obj
+typedef struct s_obj
 {
 	size_t		moves;
 	size_t		height;

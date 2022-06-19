@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 03:30:41 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 08:36:57 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 09:23:41 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,3 @@ void	load_images(t_obj *obj)
 	obj->player = img_init(obj, PLAYER);
 	obj->wall = img_init(obj, WALL);
 }
-

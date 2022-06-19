@@ -6,21 +6,19 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 01:45:01 by abziouzi          #+#    #+#              #
-#    Updated: 2022/06/16 23:15:01 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/06/19 09:32:45 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-HEADER	=	libft.h
-
-CC		=	clang
+CC		=	cc
 
 CFLAGS	=	-Wall -Wextra -Werror -g
 
 RM		=	rm -rf
 
-SRCS	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memmove.c \
+SRC		=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memmove.c \
 			ft_strcmp.c ft_strncmp.c ft_strcpy.c ft_strncpy.c ft_strlcpy.c ft_strcat.c ft_strncat.c \
 			ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strlen.c \
 			ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isprint.c ft_isascii.c ft_isblank.c ft_isspace.c \
@@ -36,18 +34,20 @@ SRCS	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memchr.c ft_memcmp.c f
 			get_next_line.c get_next_line_utils.c	\
 			ft_putchar_ptf.c ft_putstr_ptf.c ft_putnbr_ptf.c ft_printf.c ft_msg.c
 
-OBJS	=	$(SRCS:.c=.o)
+OBJ		=	$(SRC:%.c=%.o)
 
-all:		$(NAME)
+all		:	$(NAME)
 
-.c.o:
-			@$(CC) $(CFLAGS) -c $<
+$(NAME):	$(OBJ)
+			@ar rcs $(NAME) $(OBJ)
+			@echo " [ OK ] | Libft ready!"
 
-$(NAME):	$(OBJS)
-			@ar rcs $(NAME) $(OBJS)
+%.o		:	%.c libft.h
+			$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
-			@$(RM) $(OBJS)
+			@$(RM) $(OBJ)
 
 fclean:		clean
 			@$(RM) $(NAME)

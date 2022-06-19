@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:14:20 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 08:29:28 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 09:24:40 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ bool	map_validator(int fd, t_obj *obj)
 		obj->map.data[i++] = line;
 	}
 	if (obj->map.collectibles == 0 \
-	|| obj->map.exits == 0 || obj->map.players == 0 || obj->map.players > 1 \
-	|| obj->map.enemies == 0)
+		|| obj->map.exits == 0 || obj->map.players == 0
+		|| obj->map.players > 1 || obj->map.enemies == 0)
 		return (false);
 	return (true);
 }

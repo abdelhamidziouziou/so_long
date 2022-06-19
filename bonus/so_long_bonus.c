@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 06:27:36 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 08:15:25 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 09:54:43 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char *argv[])
 	t_obj	obj;
 
 	if (argc != 2)
-		return (ft_msg(ERR_ARGS), 1);
+		return (ft_msg(ERR_ARGS_BONUS), 1);
 	ft_bzero(&obj, sizeof(t_obj));
 	ft_bzero(&obj.map, sizeof(t_map));
 	if (!is_valid_ext(argv[1], ".ber"))

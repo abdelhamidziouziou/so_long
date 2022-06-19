@@ -6,7 +6,7 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 03:03:20 by abziouzi          #+#    #+#              #
-#    Updated: 2022/06/19 08:09:12 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/06/19 09:46:35 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,10 +57,10 @@ $(NAME_BONUS)	:	$(OBJ_BONUS)
 					@echo " [ OK ] | Libft ready!"
 
 %.o				:	%.c inc/so_long.h
-					$(CC) $(CFLAGS) -c $< -o $@ -I gnl -I libft
+					$(CC) $(CFLAGS) -c $< -o $@ -I inc/libft
 
 clean			:
-					rm -f $(OBJ) $(OBJ_BONUS)
+					rm -f $(OBJ) $(OBJ_BONUS) inc/libft/*.o
 
 fclean			:	clean
 					rm -f $(NAME) $(NAME_BONUS)
