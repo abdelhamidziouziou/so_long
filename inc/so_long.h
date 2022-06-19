@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 03:08:49 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 09:55:16 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 10:20:12 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ bool			check_each_line(t_obj *obj, char *line, size_t length, int y);
 bool			check_fl(char *str);
 bool			is_valid_ext(char *filename, char *ext);
 bool			map_checker(char *filename, t_obj *obj);
+bool			map_validator(int fd, t_obj *obj);
+bool			map_validator_2(int fd, t_obj *obj);
 
 int				destroy_window(t_obj *obj);
 
