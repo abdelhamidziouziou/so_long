@@ -6,7 +6,7 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 03:03:20 by abziouzi          #+#    #+#              #
-#    Updated: 2022/06/18 22:36:31 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/06/19 08:09:12 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,23 +18,23 @@ CC				=	cc
 
 FLAGS			=	-Wall -Wextra -Werror -g
 
-LIBFT			=	libft
+LIBFT			=	inc/libft
 
-SRC				=	src/so_long.c						\
-					src/check_map.c						\
-					src/check_map_utils.c				\
-					src/global_utils.c					\
-					src/movement.c						\
-					src/render.c						\
-					src/render_utils.c
+SRC				=	mandatory/so_long.c				\
+					mandatory/check_map.c			\
+					mandatory/check_map_utils.c		\
+					mandatory/global_utils.c		\
+					mandatory/movement.c			\
+					mandatory/render.c				\
+					mandatory/render_utils.c
 
-SRC_BONUS		=	bonus/src/so_long_bonus.c			\
-					bonus/src/check_map_bonus.c			\
-					bonus/src/check_map_utils_bonus.c	\
-					bonus/src/global_utils_bonus.c		\
-					bonus/src/movement_bonus.c			\
-					bonus/src/render_bonus.c			\
-					bonus/src/render_utils_bonus.c
+SRC_BONUS		=	bonus/so_long_bonus.c			\
+					bonus/check_map_bonus.c			\
+					bonus/check_map_utils_bonus.c	\
+					bonus/global_utils_bonus.c		\
+					bonus/movement_bonus.c			\
+					bonus/render_bonus.c			\
+					bonus/render_utils_bonus.c
 
 OBJ				=	$(SRC:%.c=%.o)
 

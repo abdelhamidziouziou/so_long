@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 03:08:49 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 07:46:46 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 08:34:36 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define SO_LONG_H
 
 // Libraries
-# include 						"libft.h"
+# include 						"libft/libft.h"
 # include 						<mlx.h>
+# include 						<stdbool.h>
 
 // Keys
 # define KEY_LEFT 				0
@@ -57,6 +58,7 @@ typedef struct	s_map
 {
 	char		**data;
 	size_t		collectibles;
+	size_t		enemies;
 	size_t		exits;
 	size_t		players;
 	size_t		starting_position;
@@ -71,9 +73,9 @@ typedef struct	s_img
 
 typedef struct	s_obj
 {
+	size_t		moves;
 	size_t		height;
 	size_t		width;
-	size_t		moves;
 
 	t_img		collectible;
 	t_img		enemy;
@@ -96,9 +98,11 @@ bool			check_fl(char *str);
 bool			is_valid_ext(char *filename, char *ext);
 bool			map_checker(char *filename, t_obj *obj);
 
+int				destroy_window(t_obj *obj);
+
 size_t			get_map_lines(char *filename);
 
-void			_error(char *str);
+void			check_enemy(t_obj *obj);
 void			free_all(t_obj *obj);
 void			load_images(t_obj *obj);
 void			movement(int keycode, t_obj *obj);
