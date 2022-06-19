@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 03:08:49 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/18 22:43:29 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 07:46:46 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 // XPMs
 # define COLLECTIBLE			"./img/collectible.xpm"
 # define EMPTY					"./img/empty.xpm"
-# define ENEMY					"./img/enemy.xpm"
+# define ENEMY					"./img/satan.xpm"
 # define EXIT					"./img/exit.xpm"
 # define PLAYER					"./img/player.xpm"
 # define WALL					"./img/wall.xpm"

@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 03:30:41 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/18 06:19:12 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 00:02:18 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_img(t_obj *obj, int x, int y, t_img *img)
 {
-	mlx_put_image_to_window(obj->mlx, obj->win, img->data, x * 32, y * 32);
+	mlx_put_image_to_window(obj->mlx, obj->win, img->data, x * 48, y * 48);
 }
 
 void	rendering(t_obj *obj)

@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 03:30:41 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/18 06:24:33 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/19 00:05:09 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	render(t_obj *obj)
 {
 	obj->mlx = mlx_init();
 	obj->win = mlx_new_window(obj->mlx, \
-	obj->width * 32, obj->height * 32, "abziouzi's So_long");
+	obj->width * 48, obj->height * 48, "abziouzi's So_long");
 	load_images(obj);
 	rendering(obj);
 	mlx_hook(obj->win, 2, 0L, key_handler, obj);
