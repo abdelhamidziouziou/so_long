@@ -6,65 +6,150 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 03:03:20 by abziouzi          #+#    #+#              #
-#    Updated: 2022/06/19 09:46:35 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/06/20 00:04:56 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	so_long
+# COLORS #
 
-NAME_BONUS		=	so_long_bonus
+# This is a minimal set of ANSI/VT100 color codes
+_END		=	\e[0m
+_BOLD		=	\e[1m
+_UNDER		=	\e[4m
+_REV		=	\e[7m
+
+# Colors
+_GREY		=	\e[30m
+_RED		=	\e[31m
+_GREEN		=	\e[32m
+_YELLOW		=	\e[33m
+_BLUE		=	\e[34m
+_PURPLE		=	\e[35m
+_CYAN		=	\e[36m
+_WHITE		=	\e[37m
+
+# Inverted, i.e. colored backgrounds
+_IGREY		=	\e[40m
+_IRED		=	\e[41m
+_IGREEN		=	\e[42m
+_IYELLOW	=	\e[43m
+_IBLUE		=	\e[44m
+_IPURPLE	=	\e[45m
+_ICYAN		=	\e[46m
+_IWHITE		=	\e[47m
+
+# **************************************************************************** #
+#	Norminette
+# **************************************************************************** #
+
+NORMINETTE	:=	$(shell which norminette)
+
+ifeq (, $(shell which norminette))
+	NORMINETTE := ${HOME}/.norminette/norminette.rb
+endif
+
+# **************************************************************************** #
+#	Compilation
+# **************************************************************************** #
 
 CC				=	cc
 
 FLAGS			=	-Wall -Wextra -Werror -g
 
-LIBFT			=	inc/libft
+DIR_HEADERS		=	./inc/so_long.h
 
-SRC				=	mandatory/so_long.c				\
-					mandatory/check_map.c			\
-					mandatory/check_map_utils.c		\
-					mandatory/global_utils.c		\
-					mandatory/movement.c			\
-					mandatory/render.c				\
-					mandatory/render_utils.c
+MLX_FLAGS		=	-lmlx -framework AppKit -framework OpenGl
 
-SRC_BONUS		=	bonus/so_long_bonus.c			\
-					bonus/check_map_bonus.c			\
-					bonus/check_map_utils_bonus.c	\
-					bonus/global_utils_bonus.c		\
-					bonus/movement_bonus.c			\
-					bonus/render_bonus.c			\
-					bonus/render_utils_bonus.c
+LIBFT			=	./inc/libft
 
-OBJ				=	$(SRC:%.c=%.o)
+RM				=	rm -rf
 
-OBJ_BONUS		=	$(SRC_BONUS:%.c=%.o)
+# --------------------------------------------------------------------- #
+#	Mandatory Files
+# --------------------------------------------------------------------- #
+
+NAME			=	so_long
+
+DIR_SRC			=	./src_mandatory/
+
+SRCS			=	so_long.c			\
+					check_map.c			\
+					check_map_utils.c	\
+					global_utils.c		\
+					movement.c			\
+					render.c			\
+					render_utils.c
+
+SRC				=	$(SRCS)
+
+DIR_OBJ			=	./obj_mandatory/
+
+OBJ				=	$(SRC:%.c=$(DIR_OBJ)%.o)
+
+# --------------------------------------------------------------------- #
+#	Bonus Files
+# --------------------------------------------------------------------- #
+
+NAME_BONUS		=	so_long_bonus
+
+DIR_SRC_BONUS	=	./src_bonus/
+
+SRCS_BONUS		=	so_long_bonus.c				\
+					check_map_bonus.c			\
+					check_map_utils_bonus.c		\
+					global_utils_bonus.c		\
+					movement_bonus.c			\
+					render_bonus.c				\
+					render_utils_bonus.c
+
+SRC_BONUS		=	$(SRCS_BONUS)
+
+DIR_OBJ_BONUS	=	./obj_bonus/
+
+OBJ_BONUS		=	$(SRC_BONUS:%.c=$(DIR_OBJ_BONUS)%.o)
+# --------------------------------------------------------------------- #
+#	Rules
+# --------------------------------------------------------------------- #
 
 all				:	$(NAME)
 
 $(NAME)			:	$(OBJ)
 					make -C $(LIBFT)
-					@echo " [ .. ] | Compiling libft.."
-					$(CC) $(CFLAGS) $^ -o $@ -lmlx -framework AppKit -framework OpenGl -L$(LIBFT) -lft
-					@echo " [ OK ] | Libft ready!"
+					@printf "\033[2K\r$(_GREEN) All files compiled into 'inc/libft'. $(_END)✅\n"
+					@$(CC) $(FLAGS) -I $(DIR_HEADERS) $(MLX_FLAGS) -o $(NAME) -L$(LIBFT) -lft
+					@printf "\033[2K\r$(_GREEN) Executable '$(NAME)' created. $(_END)✅\n"
+
+$(OBJ)			:	| $(DIR_OBJ)
+
+
+$(DIR_OBJ)%.o	:	$(DIR_SRC)/$(SRC)%.c
+					@printf "\033[2K\r $(_YELLOW)Compiling $< $(_END)⌛ "
+					@$(CC) $(FLAGS) -I $(DIR_HEADERS) -c $< -o $@
+
+$(DIR_OBJ)		:
+					@mkdir $(DIR_OBJ)
+
+# Bonus Part
 
 bonus			:	$(NAME_BONUS)
 
-$(NAME_BONUS)	:	$(OBJ_BONUS)
-					make -C $(LIBFT)
-					@echo " [ .. ] | Compiling libft.."
-					$(CC) $(CFLAGS) $^ -o $@ -lmlx -framework AppKit -framework OpenGl -L$(LIBFT) -lft
-					@echo " [ OK ] | Libft ready!"
 
-%.o				:	%.c inc/so_long.h
-					$(CC) $(CFLAGS) -c $< -o $@ -I inc/libft
+
+$(LIBFT)		:	| $(DIR_OBJ)
+					make -C $(LIBFT)
 
 clean			:
-					rm -f $(OBJ) $(OBJ_BONUS) inc/libft/*.o
+					$(RM) $(DIR_OBJ) $(DIR_OBJ_BONUS) inc/libft/*.o
 
 fclean			:	clean
-					rm -f $(NAME) $(NAME_BONUS)
+					$(RM) $(NAME) $(NAME_BONUS)
 
 re				:	fclean all
 
-.PHONY			:	all	bonus	clean	fclean	re
+# Norme
+
+norm:
+				@$(NORMINETTE) $(DIR_SRC)
+				@$(NORMINETTE) $(DIR_HEADERS)
+
+.PHONY:			all bonus	clean fclean re norm
