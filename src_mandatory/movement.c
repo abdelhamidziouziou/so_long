@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 03:01:29 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 08:11:23 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:51:12 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	end_game(t_obj	*obj)
 	if (obj->map.collectibles == 0)
 	{
 		write(1, "Game Ended!", 11);
+		free_all(obj);
 		exit(0);
 	}
 }

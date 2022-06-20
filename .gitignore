@@ -1,0 +1,20 @@
+# ignore object files
+*.o
+*.gch
+
+# ignore executable files
+*.out
+so_long
+so_long_bonus
+libft
+
+# ignore vscode settings
+.vscode
+.DS_Store
+
+# ignore .ber files
+*.ber
+
+# ignore valgrind files
+*.dSYM/*
+

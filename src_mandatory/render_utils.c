@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 03:30:41 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 00:02:18 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:52:54 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	draw_img(t_obj *obj, int x, int y, t_img *img)
 {
-	mlx_put_image_to_window(obj->mlx, obj->win, img->data, x * 48, y * 48);
+	mlx_put_image_to_window(obj->mlx, obj->win, img->data, x * 64, y * 64);
 }
 
-void	rendering(t_obj *obj)
+int	rendering(t_obj *obj)
 {
 	size_t	i;
 	size_t	j;
@@ -36,13 +36,14 @@ void	rendering(t_obj *obj)
 			else if (obj->map.data[i][j] == '1')
 				draw_img(obj, j, i, &obj->wall);
 			else if (obj->map.data[i][j] == 'P')
-				draw_img(obj, j, i, &obj->player);
+				draw_img(obj, j, i, &obj->player_right);
 			else if (obj->map.data[i][j] == 'E')
 				draw_img(obj, j, i, &obj->exit);
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }
 
 t_img	img_init(t_obj *obj, char *filename)
@@ -53,12 +54,13 @@ t_img	img_init(t_obj *obj, char *filename)
 	&img.width, &img.height);
 	return (img);
 }
+}
 
 void	load_images(t_obj *obj)
 {
 	obj->collectible = img_init(obj, COLLECTIBLE);
 	obj->exit = img_init(obj, EXIT);
 	obj->floor = img_init(obj, EMPTY);
-	obj->player = img_init(obj, PLAYER);
+	obj->player_right = img_init(obj, PLAYER);
 	obj->wall = img_init(obj, WALL);
 }
