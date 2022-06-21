@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 05:45:20 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 08:29:46 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:35:07 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ size_t	get_map_lines(char *filename)
 	while (line)
 	{
 		line = get_next_line(fd);
+		free(line);
 		if (!line)
 			break ;
 		else if (*line == '\n')
-			return (0);
-		free(line);
+			return (free(line), 0);
 		counter++;
 	}
-	return (counter);
+	return (close(fd), counter);
 }
 
 bool	check_fl(char *str)
@@ -90,11 +90,7 @@ bool	check_each_line(t_obj *obj, char *line, size_t length, int y)
 		else if (line[i] == 'E')
 			obj->map.exits++;
 		else if (line[i] == 'J')
-		{
 			obj->map.enemies++;
-			obj->enemy_pos.x = i;
-			obj->enemy_pos.y = y;
-		}
 		i++;
 	}
 	return (true);

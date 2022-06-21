@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 03:01:29 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 08:11:23 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:27:43 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	end_game(t_obj	*obj)
 {
 	if (obj->map.collectibles == 0)
 	{
-		write(1, "Game Ended!", 11);
+		ft_printf("Allah yta9abal !!\n");
+		free_all(obj);
 		exit(0);
 	}
 }
@@ -42,7 +43,7 @@ void	show_moves(t_obj *obj, t_point player)
 	if (obj->player_pos.x != player.x || obj->player_pos.y != player.y)
 	{
 		obj->moves++;
-		write(1, "moves: ", 7);
+		ft_printf("Steps: ");
 		ft_putnbr_fd(obj->moves, 1);
 		ft_putchar_fd('\n', 1);
 	}
