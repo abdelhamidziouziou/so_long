@@ -6,7 +6,11 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 03:30:41 by abziouzi          #+#    #+#             */
+<<<<<<< HEAD:src_mandatory/render_utils.c
 /*   Updated: 2022/06/20 13:52:54 by abziouzi         ###   ########.fr       */
+=======
+/*   Updated: 2022/06/21 00:31:33 by abziouzi         ###   ########.fr       */
+>>>>>>> 2b85e6a41390796bf6e399dcc03c5b7002f9f4cc:src_mandatory/render_utils.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +65,10 @@ void	load_images(t_obj *obj)
 	obj->collectible = img_init(obj, COLLECTIBLE);
 	obj->exit = img_init(obj, EXIT);
 	obj->floor = img_init(obj, EMPTY);
+<<<<<<< HEAD:src_mandatory/render_utils.c
 	obj->player_right = img_init(obj, PLAYER);
+=======
+	obj->player_right = img_init(obj, PLAYER_RIGHT);
+>>>>>>> 2b85e6a41390796bf6e399dcc03c5b7002f9f4cc:src_mandatory/render_utils.c
 	obj->wall = img_init(obj, WALL);
 }

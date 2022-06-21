@@ -6,7 +6,7 @@
 #    By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/11 03:03:20 by abziouzi          #+#    #+#              #
-#    Updated: 2022/06/20 13:48:17 by abziouzi         ###   ########.fr        #
+#    Updated: 2022/06/21 04:27:57 by abziouzi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,7 @@ SRC				=	src_mandatory/so_long.c				\
 					src_mandatory/global_utils.c		\
 					src_mandatory/movement.c			\
 					src_mandatory/render.c				\
-					src_mandatory/render_utils.c		\
-					inc/gnl/get_next_line.c				\
-					inc/gnl/get_next_line_utils.c
+					src_mandatory/render_utils.c
 
 SRC_BONUS		=	src_bonus/so_long_bonus.c			\
 					src_bonus/check_map_bonus.c			\

@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 06:27:36 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 09:54:43 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:40:35 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_obj	obj;
 
+	srand(time(NULL));
 	if (argc != 2)
 		return (ft_msg(ERR_ARGS_BONUS), 1);
 	ft_bzero(&obj, sizeof(t_obj));
@@ -25,5 +26,6 @@ int	main(int argc, char *argv[])
 	else if (!map_checker(argv[1], &obj))
 		return (ft_msg(ERR_MAP_READ), free_all(&obj), 1);
 	render(&obj);
+	free_all(&obj);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: abziouzi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 03:08:49 by abziouzi          #+#    #+#             */
-/*   Updated: 2022/06/19 10:20:12 by abziouzi         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:42:43 by abziouzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // Libraries
 # include "libft/libft.h"
 # include <mlx.h>
-# include <stdbool.h>
 
 // Keys
 # define KEY_LEFT				0
@@ -44,7 +43,10 @@
 # define EMPTY					"./img/empty.xpm"
 # define ENEMY					"./img/satan.xpm"
 # define EXIT					"./img/exit.xpm"
-# define PLAYER					"./img/player.xpm"
+# define PLAYER_DOWN			"./img/player_down.xpm"
+# define PLAYER_LEFT			"./img/player_left.xpm"
+# define PLAYER_RIGHT			"./img/player_right.xpm"
+# define PLAYER_UP				"./img/player_up.xpm"
 # define WALL					"./img/wall.xpm"
 
 // Structs
@@ -53,64 +55,67 @@ typedef struct s_point
 {
 	int	x;
 	int	y;
+	int	pos;
 }				t_point;
 
 typedef struct s_map
 {
-	char		**data;
-	size_t		collectibles;
-	size_t		enemies;
-	size_t		exits;
-	size_t		players;
-	size_t		starting_position;
+	char	**data;
+	size_t	collectibles;
+	size_t	exits;
+	size_t	players;
+	size_t	enemies;
 }				t_map;
 
 typedef struct s_img
 {
-	void		*data;
-	int			height;
-	int			width;
+	bool	ret;
+	int		width;
+	int		height;
+	void	*data;
 }				t_img;
 
 typedef struct s_obj
 {
-	size_t		moves;
-	size_t		height;
-	size_t		width;
+	size_t	moves;
+	size_t	stacks;
+	size_t	height;
+	size_t	width;
 
-	t_img		collectible;
-	t_img		enemy;
-	t_img		exit;
-	t_img		floor;
-	t_img		player;
-	t_img		wall;
+	t_img	collectible;
+	t_img	enemy;
+	t_img	exit;
+	t_img	floor;
+	t_img	player_right;
+	t_img	player_left;
+	t_img	player_up;
+	t_img	player_down;
+	t_img	wall;
+	t_map	map;
+	t_point	player_pos;
 
-	t_map		map;
-
-	t_point		enemy_pos;
-	t_point		player_pos;
-
-	void		*mlx;
-	void		*win;
+	void	*mlx;
+	void	*win;
 }				t_obj;
 
-bool			check_each_line(t_obj *obj, char *line, size_t length, int y);
-bool			check_fl(char *str);
-bool			is_valid_ext(char *filename, char *ext);
-bool			map_checker(char *filename, t_obj *obj);
-bool			map_validator(int fd, t_obj *obj);
-bool			map_validator_2(int fd, t_obj *obj);
+bool	check_each_line(t_obj *obj, char *line, size_t length, int y);
+bool	check_fl(char *str);
+bool	is_valid_ext(char *filename, char *ext);
+bool	map_checker(char *filename, t_obj *obj);
+bool	map_validator(int fd, t_obj *obj);
+bool	map_validator_bis(int fd, t_obj *obj);
+bool	checks(t_obj *obj, char *line, size_t length, int y);
 
-int				destroy_window(t_obj *obj);
+int		destroy_window(t_obj *obj);
+int		rendering(t_obj *obj);
 
-size_t			get_map_lines(char *filename);
+size_t	get_map_lines(char *filename);
 
-void			check_enemy(t_obj *obj);
-void			free_all(t_obj *obj);
-void			load_images(t_obj *obj);
-void			movement(int keycode, t_obj *obj);
-void			render(t_obj *obj);
-void			rendering(t_obj *obj);
-void			trim_nl(char *line, int length);
+void	check_enemy(t_obj *obj);
+void	free_all(t_obj *obj);
+void	load_images(t_obj *obj);
+void	movement(int keycode, t_obj *obj);
+void	render(t_obj *obj);
+void	trim_nl(char *line, int length);
 
 #endif
